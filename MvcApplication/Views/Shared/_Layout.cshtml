@@ -1,0 +1,111 @@
+﻿@using MvcApplication.Models
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Saint Mary's Pharmacy'</title>
+    @Styles.Render("~/Content/style.css")
+    @Styles.Render("~/Content/responsive.css")
+    @Styles.Render("~/Content/login_style.css")
+
+    @Styles.Render("~/Content/images")
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/style.css")
+    <!-- Basic -->
+
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Site Metas -->
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Saint Mary Pharmacy</title>
+
+    <!-- slider stylesheet -->
+    <link rel="stylesheet" type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.1.3/assets/owl.carousel.min.css" />
+
+    <!-- font awesome style -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+
+    <!-- bootstrap core css -->
+    <!-- fonts style -->
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,600,700|Roboto:400,700&display=swap" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- responsive style -->
+    <link href="css/responsive.css" rel="stylesheet" />
+</head>
+<body class="sub_page">
+    <header class="header_section">
+        <div class="container-fluid">
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        @Html.ActionLink("St.Mary Pharmacy", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                    </div>
+                    <div class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li>@Html.ActionLink("Tokens", "Tokens", "Account")</li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                                
+                                <li>
+                                    
+                                    @using (Html.BeginForm("Customer_Index", "Customer"))
+                                    {
+                                        
+                                           
+                                                @Html.Label("Last Name")
+                                                @Html.TextBox("Last_Name")
+                                            
+                                        
+                                        <input type="submit" />
+                                    }
+                                </li>
+                            }
+                            else
+                            {
+                                <li>@Html.ActionLink("Login", "Login", "Account")</li>
+
+                            }
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </header>
+
+    
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

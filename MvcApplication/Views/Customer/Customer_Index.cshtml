@@ -1,0 +1,35 @@
+﻿@model IEnumerable<MvcApplication.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First_Name)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <span style="color:black">
+                    @Html.DisplayFor(modle => item.First_Name)
+                </span>
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.First_Name }) |
+                @Html.ActionLink("Details", "Details", new { id = item.First_Name }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.First_Name })
+            </td>
+        </tr>
+    }
+
+</table>
